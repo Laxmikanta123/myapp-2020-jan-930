@@ -8,3 +8,4 @@ pipeline{
             steps{
                 sh script: 'mvn clean package'
             }
+        }
