@@ -12,9 +12,9 @@ pipeline{
         stage("Deploy-to-tomcat8"){
             steps{
 				sshagent(['deploy-to-tomcat']) {
-                    sh "scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.11.121:/opt/tomcat8/webapps/"
-                    sh "ssh ec2-user@172.31.11.121 /opt/tomcat8/bin/shutdown.sh"
-                    sh "ssh ec2-user@172.31.11.121 /opt/tomcat8/bin/startup.sh"
+                    sh "scp -o StrictHostKeyChecking=no target/myweb*.war ec2-user@172.31.40.148:/opt/tomcat8/webapps/myweb.war"
+                    sh "ssh ec2-user@172.31.40.148 /opt/tomcat8/bin/shutdown.sh"
+                    sh "ssh ec2-user@172.31.40.148 /opt/tomcat8/bin/startup.sh"
 					}
 				 }
 			}
