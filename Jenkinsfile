@@ -16,6 +16,7 @@ pipeline{
                def nexusRepo = "myapp-release"
                if(pomFile.version.endsWith("SNAPSHOT")){
 					nexusRepo = "myapp-snapshot"
+					}
 					nexusArtifactUploader artifacts: [
 						[
 							artifactId: 'myweb', 
@@ -31,7 +32,6 @@ pipeline{
 					protocol: 'http', 
 					repository: 'myapp-release', 
 					version: "${pomFile.version}"
-			}
 			}
 			}
 			}
