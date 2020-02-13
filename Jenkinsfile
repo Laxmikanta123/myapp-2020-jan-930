@@ -15,7 +15,7 @@ pipeline{
 				[
 					artifactId: 'myweb', 
 					classifier: 'file', 
-					file: 'target/myweb.war', 
+					file: 'target/myweb-8.13.0.war', 
 					type: 'war'
 				]	
 			], 
@@ -25,7 +25,7 @@ pipeline{
 			nexusVersion: 'nexus3', 
 			protocol: 'http', 
 			repository: 'myapp-release', 
-			version: 'pom.xml.version'
+			version: '8.13.0'
 			}
 			}
         stage("Deploy-to-tomcat8"){
