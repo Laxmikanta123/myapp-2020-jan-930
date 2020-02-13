@@ -30,7 +30,7 @@ pipeline{
 					nexusUrl: '15.206.159.147:8081/repository/maven-snapshots/', 
 					nexusVersion: 'nexus3', 
 					protocol: 'http', 
-					repository: 'myapp-release', 
+					repository: "${nexusRepo}", 
 					version: "${pomFile.version}"
 			}
 			}
