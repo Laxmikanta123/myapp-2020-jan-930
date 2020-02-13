@@ -15,7 +15,7 @@ pipeline{
 				[
 					artifactId: 'myweb', 
 					classifier: 'file', 
-					file: 'target/myweb-pom.xml.version.war', 
+					file: 'target/myweb.war', 
 					type: 'war'
 				]	
 			], 
