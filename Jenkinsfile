@@ -34,6 +34,7 @@ pipeline{
 			}
 			}
 			}
+			}
         stage("Deploy-to-tomcat8"){
             steps{
 				sshagent(['deploy-to-tomcat']) {
@@ -45,4 +46,3 @@ pipeline{
 			}
 			}
 			}
-}
