@@ -11,21 +11,27 @@ pipeline{
         }
 		stage('Upload Artifacts to Nexus'){
 		steps{
-		nexusArtifactUploader artifacts: [
-				[
-					artifactId: 'myweb', 
-					classifier: 'file', 
-					file: 'target/myweb-8.15.0.war', 
-					type: 'war'
-				]	
-			], 
-			credentialsId: 'Nexus', 
-			groupId: 'in.javahome', 
-			nexusUrl: '15.206.159.147:8081/repository/myapp-release/', 
-			nexusVersion: 'nexus3', 
-			protocol: 'http', 
-			repository: 'myapp-release', 
-			version: '8.15.0'
+			script {
+               def pomFile = readMavenPom file: 'pom.xml'
+               def nexusRepo = "myapp-release"
+               if(pomFile.version.endsWith("SNAPSHOT")){
+					nexusRepo = "myapp-snapshot"
+					nexusArtifactUploader artifacts: [
+						[
+							artifactId: 'myweb', 
+							classifier: 'file', 
+							file: "target/myweb-${pomFile.version}.war", 
+							type: 'war'
+						]	
+					], 
+					credentialsId: 'Nexus', 
+					groupId: 'in.javahome', 
+					nexusUrl: '15.206.159.147:8081/repository/maven-snapshots/', 
+					nexusVersion: 'nexus3', 
+					protocol: 'http', 
+					repository: 'myapp-release', 
+					version: "${pomFile.version}"
+			}
 			}
 			}
         stage("Deploy-to-tomcat8"){
