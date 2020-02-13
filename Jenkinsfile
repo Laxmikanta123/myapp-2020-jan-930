@@ -27,7 +27,7 @@ pipeline{
 					], 
 					credentialsId: 'Nexus', 
 					groupId: 'in.javahome', 
-					nexusUrl: '15.206.159.147:8081/repository/myapp-snapshot/', 
+					nexusUrl: '15.206.159.147:8081', 
 					nexusVersion: 'nexus3', 
 					protocol: 'http', 
 					repository: "${nexusRepo}", 
