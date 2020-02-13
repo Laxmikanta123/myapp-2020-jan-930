@@ -10,6 +10,7 @@ pipeline{
             }
         }
 		stage('Upload Artifacts to Nexus'){
+		steps{
 		nexusArtifactUploader artifacts: [
 				[
 					artifactId: 'myweb', 
@@ -25,6 +26,7 @@ pipeline{
 			protocol: 'http', 
 			repository: 'myapp-release', 
 			version: 'pom.xml.version'
+			}
 			}
         stage("Deploy-to-tomcat8"){
             steps{
